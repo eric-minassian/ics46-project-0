@@ -62,4 +62,69 @@ TEST(verifySolution, AdditionalTest1) {
   EXPECT_TRUE(verifySolution(s1, s2, s3, solution));
 }
 
+TEST(verifySolution, AdditionalTest2) {
+
+  std::string s1 = "LARRY";
+  std::string s2 = "CAREER";
+  std::string s3 = "";
+
+  std::unordered_map<char, unsigned> solution = {{'L', 5}, {'A', 2}, {'R', 1},
+                                                 {'Y', 6}, {'C', 9}, {'E', 4},
+                                                 {'G', 3}, {'N', 0}, {'D', 7}};
+
+  EXPECT_FALSE(verifySolution(s1, s2, s3, solution));
+}
+
+TEST(verifySolution, AdditionalTest3) {
+
+  std::string s1 = "ALARRY";
+  std::string s2 = "CAREER";
+  std::string s3 = "LEGEND";
+
+  std::unordered_map<char, unsigned> solution = {{'L', 5}, {'A', 2}, {'R', 1},
+                                                 {'Y', 6}, {'C', 9}, {'E', 4},
+                                                 {'G', 3}, {'N', 0}, {'D', 7}};
+
+  EXPECT_FALSE(verifySolution(s1, s2, s3, solution));
+}
+
+TEST(verifySolution, AdditionalTest4) {
+
+  std::string s1 = "L";
+  std::string s2 = "L";
+  std::string s3 = "RN";
+
+  std::unordered_map<char, unsigned> solution = {{'L', 5}, {'A', 2}, {'R', 1},
+                                                 {'Y', 6}, {'C', 9}, {'E', 4},
+                                                 {'G', 3}, {'N', 0}, {'D', 7}};
+
+  EXPECT_TRUE(verifySolution(s1, s2, s3, solution));
+}
+
+TEST(verifySolution, AdditionalTest5) {
+
+  std::string s1 = "L";
+  std::string s2 = "L";
+  std::string s3 = "N";
+
+  std::unordered_map<char, unsigned> solution = {{'L', 5}, {'A', 2}, {'R', 1},
+                                                 {'Y', 6}, {'C', 9}, {'E', 4},
+                                                 {'G', 3}, {'N', 0}, {'D', 7}};
+
+  EXPECT_FALSE(verifySolution(s1, s2, s3, solution));
+}
+
+TEST(verifySolution, AdditionalTest6) {
+
+  std::string s1 = "LAAAAACNDRYCE";
+  std::string s2 = "YAARGNDCLE";
+  std::string s3 = "YCCCCCCCCCCCCERRRLANGD";
+
+  std::unordered_map<char, unsigned> solution = {{'L', 5}, {'A', 2}, {'R', 1},
+                                                 {'Y', 6}, {'C', 9}, {'E', 4},
+                                                 {'G', 3}, {'N', 0}, {'D', 7}};
+
+  EXPECT_FALSE(verifySolution(s1, s2, s3, solution));
+}
+
 } // end namespace
