@@ -149,6 +149,25 @@ TEST(StackTest, AdditionalTest6) {
   EXPECT_EQ(myStack.top(), 3);
 }
 
+TEST(StackTest, AdditionalTest7) {
+  const LLStack<int> myStack;
+  EXPECT_EQ(myStack.size(), 0);
+}
+
+TEST(StackTest, AdditionalTest8) {
+  const LLStack<int> myStack;
+  EXPECT_THROW(myStack.top(), StackEmptyException);
+}
+
+TEST(StackTest, AdditionalTest9) {
+  LLStack<int> myStack;
+  myStack.push(5);
+  myStack.push(3);
+  const LLStack<int> newStack = myStack;
+  EXPECT_EQ(newStack.size(), 2);
+  EXPECT_EQ(newStack.top(), 3);
+}
+
 // Required Test for Calculator Implementation
 
 TEST(Required, RequiredCalcTest1) {
@@ -172,6 +191,53 @@ TEST(Required, RequiredCalcTest3) {
 TEST(CalcTest, AdditionalTest4) {
   const std::vector<std::string> EXPRESSION = {"5", "3", "*", "20", "*"};
   EXPECT_EQ(postfixCalculator(EXPRESSION), 300);
+}
+
+TEST(CalcTest, AdditionalTest5) {
+  const std::vector<std::string> EXPRESSION = {"5", "3", "*", "20",
+                                               "*", "2", "*"};
+  EXPECT_EQ(postfixCalculator(EXPRESSION), 600);
+}
+
+TEST(CalcTest, AdditionalTest6) {
+  const std::vector<std::string> EXPRESSION = {"5", "3", "*", "20", "*",
+                                               "2", "*", "2", "?"};
+  EXPECT_THROW(postfixCalculator(EXPRESSION), CannotEvaluateException);
+}
+
+TEST(CalcTest, AdditionalTest7) {
+  const std::vector<std::string> EXPRESSION = {"5", "3", "*", "20",
+                                               "*", "2", "*", "2"};
+  EXPECT_THROW(postfixCalculator(EXPRESSION), CannotEvaluateException);
+}
+
+TEST(CalcTest, AdditionalTest8) {
+  const std::vector<std::string> EXPRESSION = {};
+  EXPECT_THROW(postfixCalculator(EXPRESSION), CannotEvaluateException);
+}
+
+TEST(CalcTest, AdditionalTest9) {
+  const std::vector<std::string> EXPRESSION = {"3"};
+  EXPECT_EQ(postfixCalculator(EXPRESSION), 3);
+}
+
+TEST(CalcTest, AdditionalTest10) {
+  const std::vector<std::string> EXPRESSION = {"3", "2", "1", "4", "5",
+                                               "*", "+", "+", "+"};
+  EXPECT_EQ(postfixCalculator(EXPRESSION), 26);
+}
+
+TEST(CalcTest, AdditionalTest11) {
+  const std::vector<std::string> EXPRESSION = {"3", "2", "1", "4", "5", "*",
+                                               "+", "+", "+", "2", "*"};
+  EXPECT_EQ(postfixCalculator(EXPRESSION), 52);
+}
+
+TEST(CalcTest, AdditionalTest12) {
+  const std::vector<std::string> EXPRESSION = {"3", "2", "1", "4", "5",
+                                               "*", "+", "+", "+", "2",
+                                               "*", "2", "-", "2", "/"};
+  EXPECT_EQ(postfixCalculator(EXPRESSION), 25);
 }
 
 } // end namespace
