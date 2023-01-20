@@ -168,6 +168,19 @@ TEST(StackTest, AdditionalTest9) {
   EXPECT_EQ(newStack.top(), 3);
 }
 
+TEST(StackTest, AdditionalTest10) {
+  LLStack<int> myStack;
+  myStack.push(5);
+  myStack.push(3);
+  myStack.pop();
+  myStack.pop();
+  EXPECT_EQ(myStack.size(), 0);
+  EXPECT_THROW(myStack.top(), StackEmptyException);
+  myStack.push(1);
+  EXPECT_EQ(myStack.size(), 1);
+  EXPECT_EQ(myStack.top(), 1);
+}
+
 // Required Test for Calculator Implementation
 
 TEST(Required, RequiredCalcTest1) {
